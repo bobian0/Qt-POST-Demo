@@ -9,12 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    sendRequest("CYCJ83039873");
-//    sendRequest("37081047295817");
-//    sendRequest("30371740184712910");
-//    sendRequest("57201847194719104");
-//    sendRequest("72917549188371371");
-//    sendRequest("37082622221129901");
+    sendRequest("需要发送post请求的id");
 
     sendJSON();
 }
@@ -38,7 +33,7 @@ void MainWindow::sendRequest(const QString &id)
     qDebug()<< "jsondata组为："<<dataArray;
 
     //2.构造URL&&请求头
-    QString urlStr = "https://ellipse.xmu.edu.cn/xspine/query";
+    QString urlStr = "发送请求的地址";
     qDebug()<<"url地址为:"<<urlStr;
     url = urlStr;
     //构造请求头
@@ -64,9 +59,9 @@ void MainWindow::sendJSON()
     request.setHeader(QNetworkRequest::ContentTypeHeader,"application/json");
     request.setUrl(QUrl(send_url.toUtf8()));
     QVariantMap map;
-    map.insert("id","CYCJ83039873");
+    map.insert("id","xxxxxxxxxx");
     QVariantList sdata;
-    QFile file("D:/QTDemo/ScoliosisPC/number.txt");
+    QFile file("需要上传的文件内容路径");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         while (!file.atEnd())
@@ -78,6 +73,7 @@ void MainWindow::sendJSON()
         }
 
     }
+//下面这段注释是直接向服务器发送内容    
 //    sdata<<4.84<<-2.05<<2.01<<2.31<<-0.87<<-1.07<<-3.90<<-1.40<<-4.68
 //        <<1.82<<-4.94<<-1.03<<-3.71<<1.36<<-4.56<<2.17<<4.95<<0.15<<0.79<<-4.14
 //       <<3.82<<1.02<<4.35<<2.50<<1.14<<-0.96<<1.50<<-0.01<<-2.46<<2.04<<1.53
